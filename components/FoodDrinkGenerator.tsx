@@ -90,6 +90,8 @@ const FoodDrinkGenerator: React.FC = () => {
 
     const callGeminiImageAPI = async (prompt: string, base64Data: string, retries = 3): Promise<string> => {
         // Initialize GoogleGenAI here to ensure it uses the latest API_KEY
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
         const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
         
         for (let attempt = 0; attempt < retries; attempt++) {
@@ -120,6 +122,8 @@ const FoodDrinkGenerator: React.FC = () => {
     };
 
     const callGeminiTextAPI = async (prompt: string, base64Data: string | null = null, retries = 3): Promise<string> => {
+        import { GoogleGenerativeAI } from "@google/generative-ai";
+
         const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
         
         const contents: any[] = [{ text: prompt }];
