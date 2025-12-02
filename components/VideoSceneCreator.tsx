@@ -28,7 +28,7 @@ const VideoSceneCreator: React.FC = () => {
 
     // Helper: Generate Text using Gemini (Private inside component to avoid external deps issues)
     const generateTextFromImage = async (prompt: string, imageBase64: string | null = null, retries = 3): Promise<string> => {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
         
         const contents: any[] = [{ text: prompt }];
         if (imageBase64) {
@@ -133,7 +133,7 @@ const VideoSceneCreator: React.FC = () => {
         setScenes(prev => prev.map(s => s.id === id ? { ...s, isRegeneratingImage: true } : s));
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             // Extract visual prompt part if possible, otherwise use full prompt
             let visualPrompt = currentScene.prompt;
@@ -188,7 +188,7 @@ const VideoSceneCreator: React.FC = () => {
         setScenes(prev => prev.map(s => s.id === id ? { ...s, isLoadingVideo: true, videoUrl: null } : s));
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             const veoRatio = selectedRatio === '16:9' ? '16:9' : '9:16'; // Veo mostly supports these
 
@@ -268,7 +268,7 @@ const VideoSceneCreator: React.FC = () => {
         setIsAutoGeneratingScenes(true);
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
             const analysisPrompt = `
                 Analyze this image (Scene 1). This is the "Hook".
