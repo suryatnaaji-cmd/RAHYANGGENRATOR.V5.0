@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { 
   Plus, 
   Play, 
@@ -84,8 +85,6 @@ const ANIMAJINASI_SCHEMA = `
 
 // 1. ANALYZE IMAGE (VISION)
 const analyzeCharacterImage = async (file: File) => {
-  import { GoogleGenerativeAI } from "@google/generative-ai";
-
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
   const base64Data = await fileToBase64(file);
   
@@ -123,8 +122,6 @@ const analyzeCharacterImage = async (file: File) => {
 
 // 2. GENERATE STORY (TEXT)
 const generateStoryWithGemini = async (character: any, title: string, model: any, mode = 'initial', existingScenes: any[] = []) => {
-  import { GoogleGenerativeAI } from "@google/generative-ai";
-
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
   
   let taskInstruction = "";
@@ -235,8 +232,6 @@ const generateStoryWithGemini = async (character: any, title: string, model: any
 
 // 3. GENERATE IMAGE (IMAGEN) - WITH ASPECT RATIO
 const generateImageWithImagen = async (prompt: string, aspectRatio = '16:9') => {
-  import { GoogleGenerativeAI } from "@google/generative-ai";
-
   const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
   // Sanitize prompt: remove newlines, extra spaces, limit length to prevent bad request
   const cleanPrompt = prompt.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 500);
@@ -478,8 +473,6 @@ const AnimationGenerator: React.FC = () => {
       }
 
       // 3. Call Veo
-      import { GoogleGenerativeAI } from "@google/generative-ai";
-
       const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
       const imageBytes = scene.generated_image.split(',')[1];
       
