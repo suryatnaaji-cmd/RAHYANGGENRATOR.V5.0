@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Camera, Download, Sparkles, Image as ImageIcon, Upload, Loader2, Wand2, X, Edit3, Layers, ChefHat, Zap, Crop, Eye, RefreshCw, Video, Copy, Scan } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 import { fileToBase64, compressImage, cropImageToRatio, copyToClipboard, downloadImage, delay } from '../utils';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const FoodDrinkGenerator: React.FC = () => {
     // State
@@ -90,8 +91,6 @@ const FoodDrinkGenerator: React.FC = () => {
 
     const callGeminiImageAPI = async (prompt: string, base64Data: string, retries = 3): Promise<string> => {
         // Initialize GoogleGenAI here to ensure it uses the latest API_KEY
-        import { GoogleGenerativeAI } from "@google/generative-ai";
-
         const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
         
         for (let attempt = 0; attempt < retries; attempt++) {
