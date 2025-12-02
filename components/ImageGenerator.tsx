@@ -6,6 +6,8 @@ import CustomFileInput from './CustomFileInput';
 import { PROMPT_TEMPLATES, RATIO_OPTIONS, LANGUAGE_OPTIONS, CAMERA_ANGLES } from '../constants';
 import { fileToBase64, copyToClipboard, downloadImage, delay } from '../utils'; // Import delay
 import { PromptTemplate } from '../types';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
 
 const ImageGenerator: React.FC = () => {
     // State management
