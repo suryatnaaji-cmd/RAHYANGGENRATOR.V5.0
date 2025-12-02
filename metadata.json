@@ -1,0 +1,5 @@
+{
+  "name": "Rahyang Generator V-5.0",
+  "description": "A comprehensive content generation suite including Text-to-Speech, Image Generation, Video Prompt Crafting, and Google Labs Flow integration using Gemini models.",
+  "requestFramePermissions": []
+}
