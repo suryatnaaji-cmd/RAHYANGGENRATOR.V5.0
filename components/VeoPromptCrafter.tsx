@@ -4,6 +4,7 @@ import { Loader2, Plus, Trash2, Users, Film, Video, Download, AlertCircle, Ratio
 import { GoogleGenAI } from "@google/genai";
 import { VEO_PROMPT_DATA } from '../constants';
 import { copyToClipboard, delay } from '../utils';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface SubjectData {
     id: number;
