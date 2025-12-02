@@ -191,7 +191,7 @@ const VeoPromptCrafter: React.FC = () => {
         setVideoUrl(null);
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             // Ensure resolution is appropriate for the aspect ratio if needed, though 1080p works for both usually in preview
             // But Veo guidelines often say 720p is safer/faster for preview models
