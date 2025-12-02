@@ -1,10 +1,8 @@
-
+import { GoogleAI } from "@google/generative-ai";
 import React, { useState } from 'react';
 import { Film, Loader2, Sparkles, Plus, Trash2, Image, Wand2, Download, Crop, Languages, Eye, RefreshCw, X } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { fileToBase64, delay, downloadImage } from '../utils';
 import { RATIO_OPTIONS, LANGUAGE_OPTIONS } from '../constants';
-import { GoogleAI } from "@google/generative-ai";
 
 interface VideoScene {
     id: number;
