@@ -1,8 +1,8 @@
+import { GoogleAI } from "@google/generative-ai";
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera, Download, Sparkles, Image as ImageIcon, Upload, Loader2, Wand2, X, Edit3, Layers, ChefHat, Zap, Crop, Eye, RefreshCw, Video, Copy, Scan } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 import { fileToBase64, compressImage, cropImageToRatio, copyToClipboard, downloadImage, delay } from '../utils';
-import { GoogleAI } from "@google/generative-ai";
 
 const FoodDrinkGenerator: React.FC = () => {
     // State
