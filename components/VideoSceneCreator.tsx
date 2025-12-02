@@ -1,10 +1,8 @@
-
+import { GoogleAI } from "@google/generative-ai";
 import React, { useState } from 'react';
 import { Film, Loader2, Sparkles, Plus, Trash2, Image, Wand2, Download, Crop, Languages, Eye, RefreshCw, X } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { fileToBase64, delay, downloadImage } from '../utils';
 import { RATIO_OPTIONS, LANGUAGE_OPTIONS } from '../constants';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 
 interface VideoScene {
     id: number;
@@ -29,7 +27,7 @@ const VideoSceneCreator: React.FC = () => {
 
     // Helper: Generate Text using Gemini (Private inside component to avoid external deps issues)
     const generateTextFromImage = async (prompt: string, imageBase64: string | null = null, retries = 3): Promise<string> => {
-        const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+        const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
         
         const contents: any[] = [{ text: prompt }];
         if (imageBase64) {
@@ -134,7 +132,7 @@ const VideoSceneCreator: React.FC = () => {
         setScenes(prev => prev.map(s => s.id === id ? { ...s, isRegeneratingImage: true } : s));
 
         try {
-            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+            const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             // Extract visual prompt part if possible, otherwise use full prompt
             let visualPrompt = currentScene.prompt;
@@ -189,7 +187,7 @@ const VideoSceneCreator: React.FC = () => {
         setScenes(prev => prev.map(s => s.id === id ? { ...s, isLoadingVideo: true, videoUrl: null } : s));
 
         try {
-            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+            const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             const veoRatio = selectedRatio === '16:9' ? '16:9' : '9:16'; // Veo mostly supports these
 
@@ -269,7 +267,7 @@ const VideoSceneCreator: React.FC = () => {
         setIsAutoGeneratingScenes(true);
 
         try {
-            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+            const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
 
             const analysisPrompt = `
                 Analyze this image (Scene 1). This is the "Hook".
