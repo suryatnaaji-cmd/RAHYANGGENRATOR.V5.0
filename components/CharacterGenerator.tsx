@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Sparkles, Download, RefreshCw, Image as ImageIcon, AlertCircle, Loader2, Wand2, Edit, Lightbulb, ThumbsUp, ThumbsDown, Move, Eye, X } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai'; // Import GoogleGenAI
 import { downloadImage } from '../utils'; // Import downloadImage utility
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const CharacterGenerator: React.FC = () => {
   const [prompt, setPrompt] = useState('');
@@ -43,8 +44,6 @@ const CharacterGenerator: React.FC = () => {
 
     try {
       // Initialize GoogleGenAI here to ensure it uses the latest API_KEY
-      import { GoogleGenerativeAI } from "@google/generative-ai";
-
       const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
       const response = await ai.models.generateImages({
