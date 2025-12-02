@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { 
   Plus, 
   Play, 
@@ -33,6 +32,7 @@ import {
 } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
 import { fileToBase64, delay } from '../utils'; // Added delay import
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // --- ANIMAJINASI SYSTEM PROMPT (THE BLUEPRINT) ---
 const ANIMAJINASI_SCHEMA = `
