@@ -1,9 +1,10 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+
 import React, { useState, useMemo, useEffect } from 'react';
 import { Mic, Loader2 } from 'lucide-react';
 import { GoogleGenAI, Modality } from "@google/genai";
 import { VOICE_DATA } from '../constants';
 import { base64ToArrayBuffer, pcmToWav } from '../utils';
+import { GoogleAI } from "@google/generative-ai";
 
 // Constants
 const SAMPLE_RATE = 24000;
@@ -75,7 +76,7 @@ const TTSGenerator: React.FC = () => {
         setIsLoading(true);
 
         try {
-            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+            const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             const response = await ai.models.generateContent({
                 model: "gemini-2.5-flash-preview-tts",
