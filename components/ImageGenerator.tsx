@@ -1,4 +1,4 @@
-
+import { GoogleAI } from "@google/generative-ai";
 import React, { useState, useCallback, useEffect } from 'react';
 import { Download, Image, Zap, Loader2, Check, X, Video, Clipboard, Wand2, Edit, RefreshCcw, ListFilter, Film, Plus, Trash2, Upload, Sparkles } from 'lucide-react';
 import { GoogleGenAI } from "@google/genai";
@@ -6,7 +6,6 @@ import CustomFileInput from './CustomFileInput';
 import { PROMPT_TEMPLATES, RATIO_OPTIONS, LANGUAGE_OPTIONS, CAMERA_ANGLES } from '../constants';
 import { fileToBase64, copyToClipboard, downloadImage, delay } from '../utils'; // Import delay
 import { PromptTemplate } from '../types';
-import { GoogleAI } from "@google/generative-ai";
 
 
 const ImageGenerator: React.FC = () => {
