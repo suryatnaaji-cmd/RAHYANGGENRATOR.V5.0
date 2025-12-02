@@ -6,7 +6,7 @@ import CustomFileInput from './CustomFileInput';
 import { PROMPT_TEMPLATES, RATIO_OPTIONS, LANGUAGE_OPTIONS, CAMERA_ANGLES } from '../constants';
 import { fileToBase64, copyToClipboard, downloadImage, delay } from '../utils'; // Import delay
 import { PromptTemplate } from '../types';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleAI } from "@google/generative-ai";
 
 
 const ImageGenerator: React.FC = () => {
@@ -134,7 +134,7 @@ const ImageGenerator: React.FC = () => {
     };
 
     const generateImage = async (prompt: string, category: string, index: number): Promise<string> => {
-        const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+       const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
         const shouldSendModelImages = category === 'UGC' && modelImageBase64.length > 0;
         
         const parts = [
@@ -167,7 +167,7 @@ const ImageGenerator: React.FC = () => {
     };
 
     const generateTextFromImage = async (prompt: string, imageBase64: string | null = null, retries = 3): Promise<string> => {
-        const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+        const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
         
         const contents: any[] = [{ text: prompt }];
         if (imageBase64) {
@@ -336,7 +336,7 @@ const ImageGenerator: React.FC = () => {
         `;
 
         try {
-            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+            const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
             const parts = [
                 { text: prompt },
                 { inlineData: { mimeType: 'image/jpeg', data: originalImage } }, 
@@ -395,7 +395,7 @@ const ImageGenerator: React.FC = () => {
         setVideoGenLoading(prev => ({...prev, [itemKey]: true}));
 
         try {
-            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+            const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
             let promptText = "Cinematic product shot, slow motion, high quality, 4k, photorealistic";
             if (videoPrompts[category]?.[index]) {
                 const scenerioText = videoPrompts[category][index];
