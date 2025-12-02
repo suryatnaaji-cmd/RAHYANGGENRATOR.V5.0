@@ -74,7 +74,7 @@ const TTSGenerator: React.FC = () => {
         setIsLoading(true);
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             const response = await ai.models.generateContent({
                 model: "gemini-2.5-flash-preview-tts",
