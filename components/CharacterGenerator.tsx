@@ -43,7 +43,7 @@ const CharacterGenerator: React.FC = () => {
 
     try {
       // Initialize GoogleGenAI here to ensure it uses the latest API_KEY
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+      const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
       const response = await ai.models.generateImages({
           model: 'imagen-4.0-generate-001',
