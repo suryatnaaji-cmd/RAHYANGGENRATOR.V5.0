@@ -4,7 +4,8 @@ import { Loader2, Plus, Trash2, Users, Film, Video, Download, AlertCircle, Ratio
 import { GoogleGenAI } from "@google/genai";
 import { VEO_PROMPT_DATA } from '../constants';
 import { copyToClipboard, delay } from '../utils';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleAI } from "@google/generative-ai";
+
 
 interface SubjectData {
     id: number;
@@ -192,7 +193,7 @@ const VeoPromptCrafter: React.FC = () => {
         setVideoUrl(null);
 
         try {
-            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
+            const genAI = new GoogleAI(import.meta.env.VITE_GEMINI_API_KEY);
             
             // Ensure resolution is appropriate for the aspect ratio if needed, though 1080p works for both usually in preview
             // But Veo guidelines often say 720p is safer/faster for preview models
