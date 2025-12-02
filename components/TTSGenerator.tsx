@@ -3,6 +3,7 @@ import { Mic, Loader2 } from 'lucide-react';
 import { GoogleGenAI, Modality } from "@google/genai";
 import { VOICE_DATA } from '../constants';
 import { base64ToArrayBuffer, pcmToWav } from '../utils';
+import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Constants
 const SAMPLE_RATE = 24000;
