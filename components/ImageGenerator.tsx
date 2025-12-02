@@ -132,7 +132,7 @@ const ImageGenerator: React.FC = () => {
     };
 
     const generateImage = async (prompt: string, category: string, index: number): Promise<string> => {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
         const shouldSendModelImages = category === 'UGC' && modelImageBase64.length > 0;
         
         const parts = [
@@ -165,7 +165,7 @@ const ImageGenerator: React.FC = () => {
     };
 
     const generateTextFromImage = async (prompt: string, imageBase64: string | null = null, retries = 3): Promise<string> => {
-        const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+        const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
         
         const contents: any[] = [{ text: prompt }];
         if (imageBase64) {
@@ -334,7 +334,7 @@ const ImageGenerator: React.FC = () => {
         `;
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
             const parts = [
                 { text: prompt },
                 { inlineData: { mimeType: 'image/jpeg', data: originalImage } }, 
@@ -393,7 +393,7 @@ const ImageGenerator: React.FC = () => {
         setVideoGenLoading(prev => ({...prev, [itemKey]: true}));
 
         try {
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+            const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
             let promptText = "Cinematic product shot, slow motion, high quality, 4k, photorealistic";
             if (videoPrompts[category]?.[index]) {
                 const scenerioText = videoPrompts[category][index];
